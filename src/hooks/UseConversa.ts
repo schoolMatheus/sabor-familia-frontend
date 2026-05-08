@@ -4,7 +4,7 @@ import { conversaService } from "../service/ConversaService";
 import type { ConversaResponse } from "../dto/menssagem/response/ConversaResponse";
 import type { MensagemResponse } from "../dto/menssagem/response/MensagemResponse";
 import type { EnviarMensagemRequest } from "../dto/menssagem/request/EnviarMensagemRequest";
-import type { PageResponse } from "../dto/page/Pageresponse";
+import type { PageResponse } from "../dto/page/PageResponse";
 
 function extrairStatusCode(err: unknown): number | undefined {
   return (err as { response?: { status: number } })?.response?.status;

@@ -3,7 +3,7 @@ import type { PerfilResponse } from "../dto/perfil/response/PerfilResponse";
 import type { PerfilRequest } from "../dto/perfil/request/PerfilRequest";
 import type { EditarPerfilRequest } from "../dto/perfil/request/EditarPerfilRequest";
 import type { PerfilResumoResponse } from "../dto/perfil/response/PerfilResumoResponse";
-import type { PageResponse } from "../dto/page/Pageresponse";
+import type { PageResponse } from "../dto/page/PageResponse";
 import type { SeguindoResponse } from "../dto/seguindo/SeguindoResponse";
 
 export const perfilService = {

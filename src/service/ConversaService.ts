@@ -3,7 +3,7 @@ import type { EnviarMensagemRequest } from "../dto/menssagem/request/EnviarMensa
 import type { ConversaResponse } from "../dto/menssagem/response/ConversaResponse";
 import type { EnviarMensagemResponse } from "../dto/menssagem/response/EnviarMensagemResponse";
 import type { MensagemCursorResponse } from "../dto/menssagem/response/MensagemCursorResponse";
-import type { PageResponse } from "../dto/page/Pageresponse";
+import type { PageResponse } from "../dto/page/PageResponse";
 
 export const conversaService = {
   buscarConversas: async (
