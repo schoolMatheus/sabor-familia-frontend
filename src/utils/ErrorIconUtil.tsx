@@ -1,9 +1,9 @@
-import LockIcon     from '../../src/assets/icon/error/LockIcon';
-import WarningIcon  from '../../src/assets/icon/error/WarningIcon';
-import ServerIcon   from '../../src/assets/icon/error/ServerIcon';
-import NotFoundIcon from '../../src/assets/icon/error/NotFoundIcon';
-import GenericIcon  from '../../src/assets/icon/error/GenericIcon';
-import type { ErrorIconType } from '../../src/dto/enums/ErrorIconType';
+import LockIcon     from '../assets/icon/error/LockIcon';
+import WarningIcon  from '../assets/icon/error/WarningIcon';
+import ServerIcon   from '../assets/icon/error/ServerIcon';
+import NotFoundIcon from '../assets/icon/error/NotFoundIcon';
+import GenericIcon  from '../assets/icon/error/GenericIcon';
+import type { ErrorIconType } from '../dto/enums/ErrorIconType';
 
 interface ErrorIconProps {
   type: ErrorIconType;

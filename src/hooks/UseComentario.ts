@@ -56,8 +56,6 @@ export function useAdicionarComentario(receitaId: number) {
         comentario: texto,
       });
 
-      // Adapta ComentarioResponse → PerfilComentarioResponse para atualizar a
-      // lista local sem precisar rebuscar do backend.
       const comentarioAdaptado: PerfilComentarioResponse = {
         id: response.id,
         perfilId: response.usuarioId,
@@ -110,7 +108,5 @@ export function useRemoverComentario(receitaId: number) {
     }
   };
 
-  // loadingId carrega o ID do comentário sendo removido, útil para desabilitar
-  // apenas o botão daquele item específico na lista.
   return { remover, loadingId, error };
 }
