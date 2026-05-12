@@ -1,4 +1,4 @@
-import api from "../Api";
+import api from "../lib/Api";
 import type { ReceitaRequest } from "../dto/receita/request/ReceitaRequest";
 import type { ReceitaResponse } from "../dto/receita/response/ReceitaResponse";
 import type { ReceitaResumoResponse } from "../dto/receita/response/ReceitaResumoResponse";

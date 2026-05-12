@@ -1,4 +1,4 @@
-import api from "../Api";
+import api from "../lib/Api";
 import type { CurtidaResponse } from "../dto/curtida/CurtidaResponse";
 import type { PerfilCurtidaResponse } from "../dto/receita/response/PerfilCurtidaResponse";
 

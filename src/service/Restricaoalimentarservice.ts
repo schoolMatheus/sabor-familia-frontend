@@ -1,4 +1,4 @@
-import api from "../Api";
+import api from "../lib/Api";
 import type { RestricaoAlimentarResponse } from "../dto/restricao/response/RestricaoAlimentarResponse";
 import type { EditarRestricaoAlimentarRequest } from "../dto/restricao/request/EditarRestricaoAlimentarRequest";
 

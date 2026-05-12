@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { perfilService } from "../service/PerfilService";
+import { authService } from "../service/AuthService";
+import { useAuth } from "./UseAuth";
 import type { PerfilRequest } from "../dto/perfil/request/PerfilRequest";
 import type { EditarPerfilRequest } from "../dto/perfil/request/EditarPerfilRequest";
 import type { PerfilResponse } from "../dto/perfil/response/PerfilResponse";
@@ -53,30 +55,37 @@ export function useBuscarPerfil(perfilId: number) {
 export function useLogin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { salvarToken, salvarPerfil } = useAuth();
   const navigate = useNavigate();
 
-  const login = async (nome: string, email: string): Promise<PerfilResponse | null> => {
+  const login = async (usernameOrEmail: string, password: string) => {
     setLoading(true);
     setError(null);
     try {
-      const perfil = await perfilService.buscarMeuPerfil();
+      const loginResponse = await authService.login({ usernameOrEmail, password });
+      salvarToken(loginResponse);
 
-      const nomeValido  = perfil.detalhes.nome.toLowerCase()  === nome.toLowerCase();
-      const emailValido = perfil.detalhes.email.toLowerCase() === email.toLowerCase();
-
-      if (!nomeValido || !emailValido) {
-        setError("Nome ou e-mail inválidos.");
-        return null;
+      try {
+        const perfil = await perfilService.buscarMeuPerfil();
+        salvarPerfil(perfil);
+        navigate("/home");
+      } catch (perfilErr: unknown) {
+        const status = (perfilErr as { response?: { status: number } })?.response?.status;
+        if (status === 404) {
+          navigate("/criar-perfil");
+        } else {
+          navigate("/error", { state: { statusCode: status } });
+        }
       }
-
-      return perfil;
     } catch (err: unknown) {
-      if (isApiError(err)) {
-        navigate("/error", { state: { statusCode: err.response?.status } });
+      const status = (err as { response?: { status: number } })?.response?.status;
+      if (status === 401) {
+        setError("Usuário ou senha inválidos.");
+      } else if (status) {
+        navigate("/error", { state: { statusCode: status } });
       } else {
         setError("Erro ao realizar login.");
       }
-      return null;
     } finally {
       setLoading(false);
     }

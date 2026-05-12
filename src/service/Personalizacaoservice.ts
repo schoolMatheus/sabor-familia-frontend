@@ -1,4 +1,4 @@
-import api from "../Api";
+import api from "../lib/Api";
 import type { EditarPersonalizacaoRequest } from "../dto/personalizacao/request/EditarPersonalizacaoRequest";
 import type { CatalogoPersonalizacaoResponse } from "../dto/personalizacao/response/CatalogoPersonalizacaoResponse";
 import type { CategoriaPersonalizacaoResponse } from "../dto/personalizacao/response/CategoriaPersonalizacaoResponse";

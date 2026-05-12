@@ -1,10 +1,13 @@
-import { createContext} from "react";
+import { createContext } from "react";
+import type { LoginResponse } from "../dto/auth/response/LoginResponse";
 import type { PerfilResponse } from "../dto/perfil/response/PerfilResponse";
 
 export interface AuthContextData {
+  token: string | null;
   usuarioId: number | null;
   perfil: PerfilResponse | null;
-  salvarAuth: (perfil: PerfilResponse) => void;
+  salvarToken: (loginResponse: LoginResponse) => void;
+  salvarPerfil: (perfil: PerfilResponse) => void;
   limparAuth: () => void;
 }
 

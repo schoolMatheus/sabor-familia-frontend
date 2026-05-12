@@ -1,23 +1,37 @@
 import { useState } from "react";
 import { AuthContext } from "./AuthContext";
+import type { LoginResponse } from "../dto/auth/response/LoginResponse";
 import type { PerfilResponse } from "../dto/perfil/response/PerfilResponse";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [usuarioId, setUsuarioId] = useState<number | null>(null);
+  const [token, setToken]       = useState<string | null>(() => localStorage.getItem("accessToken"));
+  const [usuarioId, setUsuarioId] = useState<number | null>(() => {
+    const stored = localStorage.getItem("usuarioId");
+    return stored ? Number(stored) : null;
+  });
   const [perfil, setPerfil] = useState<PerfilResponse | null>(null);
 
-  const salvarAuth = (perfil: PerfilResponse) => {
-    setUsuarioId(perfil.usuarioId);
+  const salvarToken = (loginResponse: LoginResponse) => {
+    localStorage.setItem("accessToken", loginResponse.accessToken);
+    localStorage.setItem("usuarioId", String(loginResponse.userId));
+    setToken(loginResponse.accessToken);
+    setUsuarioId(loginResponse.userId);
+  };
+
+  const salvarPerfil = (perfil: PerfilResponse) => {
     setPerfil(perfil);
   };
 
   const limparAuth = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("usuarioId");
+    setToken(null);
     setUsuarioId(null);
     setPerfil(null);
   };
 
   return (
-    <AuthContext.Provider value={{ usuarioId, perfil, salvarAuth, limparAuth }}>
+    <AuthContext.Provider value={{ token, usuarioId, perfil, salvarToken, salvarPerfil, limparAuth }}>
       {children}
     </AuthContext.Provider>
   );

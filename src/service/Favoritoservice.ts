@@ -1,4 +1,4 @@
-import api from "../Api";
+import api from "../lib/Api";
 import type { FavoritoResponse } from "../dto/favorito/FavoritoResponse";
 
 export const favoritoService = {

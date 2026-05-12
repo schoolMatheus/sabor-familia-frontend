@@ -1,4 +1,4 @@
-import api from "../Api";
+import api from "../lib/Api";
 import type { ComentarioRequest } from "../dto/comentario/request/ComentarioRequest";
 import type { ComentarioResponse } from "../dto/comentario/response/ComentarioResponse";
 import type { PerfilComentarioResponse } from "../dto/receita/response/PerfilComentarioResponse";

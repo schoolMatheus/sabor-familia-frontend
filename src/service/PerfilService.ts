@@ -1,4 +1,4 @@
-import api from "../Api";
+import api from "../lib/Api";
 import type { PerfilResponse } from "../dto/perfil/response/PerfilResponse";
 import type { PerfilRequest } from "../dto/perfil/request/PerfilRequest";
 import type { EditarPerfilRequest } from "../dto/perfil/request/EditarPerfilRequest";

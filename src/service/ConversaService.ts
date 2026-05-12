@@ -1,4 +1,4 @@
-import api from "../Api";
+import api from "../lib/Api";
 import type { EnviarMensagemRequest } from "../dto/menssagem/request/EnviarMensagemRequest";
 import type { ConversaResponse } from "../dto/menssagem/response/ConversaResponse";
 import type { EnviarMensagemResponse } from "../dto/menssagem/response/EnviarMensagemResponse";
