@@ -1,4 +1,4 @@
-import type { CategoriaPersonalizacaoEnum } from "../../enums/CategoriaPersonalizacaoEnum ";
+import type { CategoriaPersonalizacaoEnum } from "../../enums/CategoriaPersonalizacaoEnum";
 import type { StatusEnum } from "../../enums/StatusEnum";
 
 export interface PersonalizacaoResponse {

@@ -22,7 +22,6 @@ function FeedCard({ receita, isSelected, onClick }: FeedCardProps) {
     receita.estatisticas.curtidas
   );
 
-  // favoritadoPeloUsuario pode não existir no DTO atual; adapte quando o backend expor o campo
   const { favoritado, alternar: alternarFavorito } = useAlternarFavorito(
     receita.id,
     (receita as ReceitaResponse & { favoritadoPeloUsuario?: boolean }).favoritadoPeloUsuario ?? false
@@ -33,13 +32,11 @@ function FeedCard({ receita, isSelected, onClick }: FeedCardProps) {
   const navigate = useNavigate();
   const tempo = receita.dataCadastro ? formatarTempo(receita.dataCadastro) : "";
 
-  // A foto de capa pode não estar em ReceitaResponse – adapte quando o campo for adicionado ao DTO
   const fotoCapaUrl =
     (receita as ReceitaResponse & { fotoCapaUrl?: string | null }).fotoCapaUrl ?? null;
 
   return (
     <article className={`feed-card ${isSelected ? "feed-card--selected" : ""}`}>
-      {/* ── Cabeçalho: autor ── */}
       <header className="feed-card__header">
         <div
           className="feed-card__author"
@@ -82,7 +79,6 @@ function FeedCard({ receita, isSelected, onClick }: FeedCardProps) {
         )}
       </div>
 
-      {/* ── Rodapé: ações ── */}
       <footer className="feed-card__footer">
         {/* Curtir */}
         <button

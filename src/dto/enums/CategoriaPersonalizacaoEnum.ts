@@ -1,4 +1,3 @@
-
 export type CategoriaPersonalizacaoEnum =
   | "TEMPO_E_ESFORCO"
   | "CUSTO_E_ACESSO"

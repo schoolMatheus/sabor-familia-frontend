@@ -1,4 +1,4 @@
-import type { CategoriaPersonalizacaoEnum } from "../../enums/CategoriaPersonalizacaoEnum ";
+import type { CategoriaPersonalizacaoEnum } from "../../enums/CategoriaPersonalizacaoEnum";
 
 export interface PersonalizacaoResumoResponse {
   id: number;

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { restricaoAlimentarService } from "../service/Restricaoalimentarservice";
+import { restricaoAlimentarService } from "../service/RestricaoalimentarService";
 import type { RestricaoAlimentarResponse } from "../dto/restricao/response/RestricaoAlimentarResponse";
 import type { EditarRestricaoAlimentarRequest } from "../dto/restricao/request/EditarRestricaoAlimentarRequest";
 
