@@ -36,7 +36,7 @@ export function useBuscarPerfil(perfilId: number) {
       setPerfil(data);
     } catch (err: unknown) {
       if (isApiError(err)) {
-        navigate("/error", { state: { statusCode: err.response?.status } });
+        navigate("/error", { state: { statusCode: err.response?.status }, replace: true });
       } else {
         setError("Erro ao buscar perfil.");
       }
@@ -74,7 +74,7 @@ export function useLogin() {
         if (status === 404) {
           navigate("/criar-perfil");
         } else {
-          navigate("/error", { state: { statusCode: status } });
+          navigate("/error", { state: { statusCode: status }, replace: true });
         }
       }
     } catch (err: unknown) {
@@ -82,7 +82,7 @@ export function useLogin() {
       if (status === 401) {
         setError("Usuário ou senha inválidos.");
       } else if (status) {
-        navigate("/error", { state: { statusCode: status } });
+        navigate("/error", { state: { statusCode: status }, replace: true });
       } else {
         setError("Erro ao realizar login.");
       }
@@ -110,7 +110,7 @@ export function useCriarPerfil() {
       onSucesso?.(perfil);
     } catch (err: unknown) {
       if (isApiError(err)) {
-        navigate("/error", { state: { statusCode: err.response?.status } });
+        navigate("/error", { state: { statusCode: err.response?.status }, replace: true });
       } else {
         setError("Erro ao criar perfil.");
       }
@@ -138,7 +138,7 @@ export function useEditarPerfil() {
       onSucesso?.(perfil);
     } catch (err: unknown) {
       if (isApiError(err)) {
-        navigate("/error", { state: { statusCode: err.response?.status } });
+        navigate("/error", { state: { statusCode: err.response?.status }, replace: true });
       } else {
         setError("Erro ao editar perfil.");
       }
@@ -164,7 +164,7 @@ export function useBuscarSeguidores(perfilId: number, page = 0, size = 20) {
       setSeguidores(data);
     } catch (err: unknown) {
       if (isApiError(err)) {
-        navigate("/error", { state: { statusCode: err.response?.status } });
+        navigate("/error", { state: { statusCode: err.response?.status }, replace: true });
       } else {
         setError("Erro ao buscar seguidores.");
       }
@@ -194,7 +194,7 @@ export function useBuscarSeguindo(perfilId: number, page = 0, size = 20) {
       setSeguindo(data);
     } catch (err: unknown) {
       if (isApiError(err)) {
-        navigate("/error", { state: { statusCode: err.response?.status } });
+        navigate("/error", { state: { statusCode: err.response?.status }, replace: true });
       } else {
         setError("Erro ao buscar seguindo.");
       }
@@ -237,12 +237,11 @@ export function useAlternarSeguir(
         await perfilService.deixarSeguirPerfil(perfilId);
       }
     } catch (err: unknown) {
-      // Reverte em caso de erro.
       setSeguindo(seguindoInicial);
       setTotalSeguidores(totalSeguidoresInicial);
 
       if (isApiError(err)) {
-        navigate("/error", { state: { statusCode: err.response?.status } });
+        navigate("/error", { state: { statusCode: err.response?.status }, replace: true });
       } else {
         setError("Erro ao atualizar seguir.");
       }

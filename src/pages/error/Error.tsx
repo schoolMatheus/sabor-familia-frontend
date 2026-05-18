@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ERROR_MAP, FALLBACK_ERROR } from '../../utils/errorMapUtils';
 import type { ErrorPageProps } from '../../dto/error/ErrorPageProps';
-import ErrorIcon from '../../utils/errorIconUtil';
+import ErrorIcon from '../../utils/ErrorIconUtil';
 import './error.css';
 
 export default function ErrorPage({ message, onRetry }: Omit<ErrorPageProps, 'statusCode'>) {
@@ -62,7 +62,7 @@ export default function ErrorPage({ message, onRetry }: Omit<ErrorPageProps, 'st
           </button>
         </div>
 
-        {/* Dica de suporte */}
+        {/* Suporte */}
         <p className="error-hint">
           Problema persistindo?{' '}
           <a href="mailto:suporte@seudominio.com.br">Entre em contato</a>

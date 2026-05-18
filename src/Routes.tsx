@@ -6,6 +6,8 @@ import AddReceita from './pages/receita/AdicionarReceita';
 // import Favoritos from './pages/favoritos';
 // import Explorar from './pages/explorar';
 import Error from './pages/error/Error';
+import Perfil from './pages/perfil/Perfil';
+import EditarPerfil from './pages/perfil/EditarPerfil';
 
 const AppRoutes = () =>{
   return(
@@ -15,12 +17,13 @@ const AppRoutes = () =>{
         <Route path="/" element={<Login />} />
         <Route path='/home' element={<Home/>}/>
         <Route path='/receita/nova' element={<AddReceita/>}/>
+        <Route path='/perfil/editar' element={<EditarPerfil/>}/>
         {/* <Route path='/favoritos' element={<Configuracoes/>}/> */}
         {/* <Route path='/mensagens' element={<Favoritos/>}/> */}
         {/* <Route path='/explorar' element={<Explorar/>}/> */}
+        <Route path='/perfil/:perfilId' element={<Perfil/>}/>
         <Route path='/error' element={<Error/>}/>
         <Route path="*"      element={<Error />} /> 
-        {/* <Route path='/' element={<Perfil/>}/> */}
       </Routes>
     </BrowserRouter>
   );

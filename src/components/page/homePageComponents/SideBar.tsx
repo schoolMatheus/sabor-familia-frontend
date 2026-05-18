@@ -2,7 +2,8 @@ import "./sideBar.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/UseAuth";
 import HomeIcon from "../../../assets/icon/menu/HomeIcon";
-import SearchIcon from "../../../assets/icon/menu/SearchIcon";
+// import SearchIcon from "../../../assets/icon/menu/SearchIcon";
+import CompassIcon from "../../../assets/icon/menu/CompassIcon";
 import ChatIcon from "../../../assets/icon/menu/ChatIcon";
 import HeartIcon from "../../../assets/icon/menu/HeartIcon"; 
 import PlusIcon from "../../../assets/icon/menu/PlusIcon";
@@ -11,11 +12,11 @@ import SettingsIcon from "../../../assets/icon/menu/SettingsIcon";
 
 function Sidebar() {
   const navigate = useNavigate();
-  const { perfil } = useAuth();
+  const { perfil, perfilId  } = useAuth();
 
   const links = [
     { label: "Início",          icon: <HomeIcon />,     path: "/home" },
-    { label: "Buscar",          icon: <SearchIcon />,   path: "/explorar" },
+    { label: "Explorar",        icon: <CompassIcon />,  path: "/explorar" }, 
     { label: "Mensagens",       icon: <ChatIcon />,     path: "/mensagens" },
     { label: "Favoritos",       icon: <HeartIcon />,    path: "/favoritos" },
     { label: "Adicionar receita", icon: <PlusIcon />,   path: "/receita/nova" },
@@ -52,7 +53,7 @@ function Sidebar() {
       </nav>
 
       <div className="sidebar-bottom">
-        <button className="sidebar-link" onClick={() => navigate(`/perfil/${perfil?.id}`)}>
+        <button className="sidebar-link" onClick={() => perfilId && navigate(`/perfil/${perfilId}`)}>
           {perfil?.detalhes?.fotoPerfilUrl ? (
             <img src={perfil.detalhes.fotoPerfilUrl} className="sidebar-avatar" alt="avatar" />
           ) : (
